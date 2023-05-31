@@ -14,21 +14,19 @@ import { create_walls } from './components/walls';
 import { create_couch } from './components/objects/furniture/chair';
 
 import { create_lamp } from './components/objects/furniture/lamp';
+import { create_camera } from './components/camera'; 
 
 export function run() {
     // var scene = new THREE.Scene()
     let active = new ActiveScene(new THREE.Scene())
     let scene = active.scene
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    create_camera(active)
+
     // var camera = new THREE.OrthographicCamera(
     //     window.innerWidth / -120, window.innerWidth / 120,
     //     window.innerHeight / 120, window.innerHeight / -120,
     //     0.1, 1000
     // )
-
-    var renderer = new THREE.WebGLRenderer()
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    document.body.appendChild(renderer.domElement)
 
     create_skybox(active)
 
@@ -40,20 +38,7 @@ export function run() {
 
     create_lamp(active)
 
-    camera.rotation.order = 'YXZ';
-    camera.rotation.y = -Math.PI / 4;
-    camera.rotation.x = Math.atan(-1 / Math.sqrt(2));
 
-    // Set up the camera position
-    camera.position.set(10, 9, 8)
-    camera.lookAt(scene.position)
-
-    var controls = new OrbitControls(camera, renderer.domElement)
-    controls.enablePan = false // Enable panning with the mouse
-
-    controls.enableRotate = true
-    controls.autoRotate = false
-    controls.autoRotateSpeed = 1
 
     // var buttonTexture = new THREE.TextureLoader().load('button_2.png');
     // var buttonMaterial = new THREE.SpriteMaterial({ map: buttonTexture });
@@ -111,19 +96,14 @@ export function run() {
     //     }
     // }
 
-    var composer = new EffectComposer(renderer);
-    composer.addPass(new RenderPass(scene, camera));
 
-    var filmPass = new FilmPass(50, 1, 1024, false);
-    filmPass.renderToScreen = true;
-    composer.addPass(filmPass);
 
     // Render the scene
     function animate() {
         requestAnimationFrame(animate)
-        composer.render();
+        active.composer.render();
         // renderer.render(scene, camera)
-        controls.update()
+        active.controls.update()
     }
     animate()
 }
