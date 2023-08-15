@@ -7,6 +7,7 @@ import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';// Set 
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';// Set up the scene, camera, and renderer
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 
+
 export function create_camera(active: ActiveScene) {
     var scene = active.scene
 
@@ -43,7 +44,9 @@ export function create_camera(active: ActiveScene) {
 
     active.composer = composer
 
-    var filmPass = new FilmPass(50, 1, 1024, false);
-    filmPass.renderToScreen = true;
-    composer.addPass(filmPass);
+    // var filmPass = new FilmPass(50, 1, 1024, false);
+    // filmPass.renderToScreen = true;
+    // composer.addPass(filmPass);
+
+    
 }
