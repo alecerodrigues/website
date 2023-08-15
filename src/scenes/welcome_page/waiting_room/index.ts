@@ -42,8 +42,7 @@ export function run() {
     // Create the room 
     new FLOOR.ZIGZAG_TILE()
     new WALLS.RED_CURTAINS()
-    // create_walls(active)
-
+    
     create_couch(active)
     create_lamp(active)
 
