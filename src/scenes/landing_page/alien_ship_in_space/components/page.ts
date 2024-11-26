@@ -23,7 +23,7 @@ export function run() {
     /**
      * Generate SkyBox
      */
-    // new SKYBOX.STARFIELD()
+    new SKYBOX.STARFIELD()
 
     /**
      * Generate Alien Spaceship
@@ -35,7 +35,7 @@ export function run() {
     function animate() {
         requestAnimationFrame(animate)
         active.composer.render();
-        renderer.render(scene, camera)
+        // renderer.render(scene, camera)
         active.controls.update()
     }
     animate()
