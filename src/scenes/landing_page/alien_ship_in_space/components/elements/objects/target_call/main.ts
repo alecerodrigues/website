@@ -8,12 +8,12 @@ export function create(active: ActiveScene) {
     var obj_loader = new OBJLoader();  // OBJ loader instance
 
     // Load the OBJ file
-    obj_loader.load('./assets/spaceship.obj', function (obj) {
+    obj_loader.load('./assets/target_call.obj', function (obj) {
         console.log("OBJ Loaded Successfully", obj); // Debugging: Check if OBJ is loaded
 
         // Load the PNG texture
         var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load('./assets/spaceship_texture.png', 
+        var texture = textureLoader.load('./assets/target_call_texture.png', 
             function () {
                 console.log("Texture Loaded Successfully");
             },
@@ -45,7 +45,7 @@ export function create(active: ActiveScene) {
                         child.material.needsUpdate = true; // Ensure material update
                         child.material.roughness = 0.3; // Less roughness = shinier surface
                         child.material.metalness = 0.6; 
-                        child.material.transparent = false; // Enable transparency
+                        child.material.transparent = true; // Enable transparency
                     }
                 } else {
                     // If no material exists, create a new 
@@ -61,8 +61,10 @@ export function create(active: ActiveScene) {
         });
 
         // Position, scale, and add the OBJ model to the scene
-        obj.position.set(0, -2, 5);
-        obj.scale.set(6.0, 6.0, 6.0);
+        obj.position.set(-25, 0, -15);
+        let scalar = 15
+        obj.scale.set(scalar * 1.0, scalar * 1.0, scalar * 1.0);
+        obj.rotation.setFromVector3(new THREE.Vector3( 0, -Math.PI/1.5, 0));
         scene.add(obj);
 
         // Add lighting to see the effect of MeshStandardMaterial

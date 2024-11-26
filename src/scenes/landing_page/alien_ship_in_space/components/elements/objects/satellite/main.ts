@@ -8,12 +8,12 @@ export function create(active: ActiveScene) {
     var obj_loader = new OBJLoader();  // OBJ loader instance
 
     // Load the OBJ file
-    obj_loader.load('./assets/spaceship.obj', function (obj) {
+    obj_loader.load('./assets/satellite.obj', function (obj) {
         console.log("OBJ Loaded Successfully", obj); // Debugging: Check if OBJ is loaded
 
         // Load the PNG texture
         var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load('./assets/spaceship_texture.png', 
+        var texture = textureLoader.load('./assets/satellite_texture.png', 
             function () {
                 console.log("Texture Loaded Successfully");
             },
@@ -61,8 +61,9 @@ export function create(active: ActiveScene) {
         });
 
         // Position, scale, and add the OBJ model to the scene
-        obj.position.set(0, -2, 5);
-        obj.scale.set(6.0, 6.0, 6.0);
+        obj.position.set(-20, 15, -20);
+        obj.scale.set(3.0, 3.0, 3.0);
+        obj.rotation.setFromVector3(new THREE.Vector3( 0, -Math.PI/1.5, Math.PI / 3));
         scene.add(obj);
 
         // Add lighting to see the effect of MeshStandardMaterial

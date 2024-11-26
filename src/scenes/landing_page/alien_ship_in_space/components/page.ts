@@ -29,7 +29,8 @@ export function run() {
      * Generate Alien Spaceship
      */
     new OBJECTS.SPACESHIP()
-
+    new OBJECTS.SATELLITE()
+    new OBJECTS.TARGET_CALL()
 
     // Render the scene
     function animate() {
