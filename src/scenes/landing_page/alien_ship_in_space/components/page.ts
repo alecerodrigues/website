@@ -18,7 +18,7 @@ export function run() {
     /**
      * Generate Camera
      */
-    new CAMERA()
+    let camera = new CAMERA()
 
     /**
      * Generate SkyBox
@@ -35,7 +35,7 @@ export function run() {
     function animate() {
         requestAnimationFrame(animate)
         active.composer.render();
-        // renderer.render(scene, camera)
+        renderer.render(scene, camera)
         active.controls.update()
     }
     animate()
